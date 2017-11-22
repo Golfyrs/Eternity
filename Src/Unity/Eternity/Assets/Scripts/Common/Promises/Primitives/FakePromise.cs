@@ -1,7 +1,7 @@
 ﻿using System;
-using Core.Promises.Core;
+using Common.Promises.Core;
 
-namespace Core.Promises.Primitives
+namespace Common.Promises.Primitives
 {
     /// <summary>
     ///     Represents <see cref="IPromise"/> that will never be satisfied.

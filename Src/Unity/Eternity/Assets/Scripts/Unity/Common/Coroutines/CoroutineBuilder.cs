@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Common.Unity.Coroutines
+namespace Unity.Common.Coroutines
 {
     /// <summary>
     ///     Represents coroutine builder,

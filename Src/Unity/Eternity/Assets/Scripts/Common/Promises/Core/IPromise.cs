@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Core.Promises.Core
+namespace Common.Promises.Core
 {
     /// <summary>
     ///     Represents promise that will be satisfied at some undefined moment of time in future.

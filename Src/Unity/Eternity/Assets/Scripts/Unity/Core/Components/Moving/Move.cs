@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Components.Moving
+namespace Unity.Core.Components.Moving
 {
     public class Move : MonoBehaviour
     {

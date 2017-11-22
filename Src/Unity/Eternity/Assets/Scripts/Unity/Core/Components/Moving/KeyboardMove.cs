@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Components.Moving
+namespace Unity.Core.Components.Moving
 {
     [RequireComponent(typeof(Move))]
     public class KeyboardMove : MonoBehaviour

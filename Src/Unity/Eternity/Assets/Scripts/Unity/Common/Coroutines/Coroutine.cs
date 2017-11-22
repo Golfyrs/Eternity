@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
-namespace Common.Unity.Coroutines
+namespace Unity.Common.Coroutines
 {
     /// <summary>
     ///     Represents static type object that helps to perform coroutine operations.

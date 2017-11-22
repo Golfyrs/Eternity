@@ -1,8 +1,8 @@
 ﻿using System;
-using Core.Promises.Core;
-using Core.Promises.Primitives;
+using Common.Promises.Core;
+using Common.Promises.Primitives;
 
-namespace Core.Promises.Extensions
+namespace Common.Promises.Extensions
 {
     /// <summary>
     ///     Represents extensions applied on <see cref="IPromise"/>.

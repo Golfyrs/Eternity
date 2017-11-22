@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections;
-using Core.Promises.Core;
-using Core.Promises.Primitives;
-using Coroutine = Common.Unity.Coroutines.Coroutine;
+using Common.Promises.Core;
+using Common.Promises.Primitives;
+using Coroutine = Unity.Common.Coroutines.Coroutine;
 
-namespace Core.Promises.Unity
+namespace Unity.Common.Promises
 {
     public static class CoroutinePromiseExtensions
     {

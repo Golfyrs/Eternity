@@ -2,7 +2,7 @@
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Common.Unity
+namespace Unity.Common
 {
     /// <summary>
     ///     Represents temporary <see cref="GameObject"/>, which will be destroyed after disposing.

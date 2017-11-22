@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.0.0
 MinimumVisualStudioVersion = 10.0.0.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eternity.Server.Core", "Eternity.Server.Core\Eternity.Server.Core.csproj", "{D070C5E5-07EE-42FF-B26E-A6E9ED9BAB84}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eternity.Server.Core", "Core\Eternity.Server.Core.csproj", "{D070C5E5-07EE-42FF-B26E-A6E9ED9BAB84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eternity.Server.Tests", "Eternity.Server.Tests\Eternity.Server.Tests.csproj", "{749E5CE2-0C73-45B8-B0AE-3E3C482C9EA7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eternity.Server.Tests", "Tests\Eternity.Server.Tests.csproj", "{749E5CE2-0C73-45B8-B0AE-3E3C482C9EA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

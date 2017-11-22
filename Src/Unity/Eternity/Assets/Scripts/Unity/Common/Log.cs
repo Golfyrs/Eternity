@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Reflection;
 using Debug = UnityEngine.Debug;
 
-namespace Common.Unity
+namespace Unity.Common
 {
     /// <summary>
     ///     Represents static type object that helps to log common situations to Unity console.

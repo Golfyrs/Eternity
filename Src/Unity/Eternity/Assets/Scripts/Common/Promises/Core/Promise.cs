@@ -1,6 +1,6 @@
-﻿using Core.Promises.Primitives;
+﻿using Common.Promises.Primitives;
 
-namespace Core.Promises.Core
+namespace Common.Promises.Core
 {
     /// <summary>
     ///     Represents static type object with helper methods for creation of different types of <see cref="IPromise"/>.
