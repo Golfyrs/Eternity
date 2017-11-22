@@ -1,12 +1,12 @@
 image: Visual Studio 2015
 
 before_build:
-- nuget restore Eternity.Server.sln
+- nuget restore Src\Server\Eternity.Server.sln
 
 build:
-  project: Eternity.Server.sln
+  project: Src\Server\Eternity.Server.sln
   verbosity: minimal
 
 test_script:
-- packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user "-target:C:\projects\Eternity\Src\Server\packages\xunit.runner.console.2.3.1\tools\net452\xunit.console.exe" "-filter:+[Eternity.Server]* -[Eternity.Server.Tests*]*" -output:"coverage.xml" -targetargs:"/testcontainer:""C:\projects\Eternity\Src\Server\Tests\bin\Debug\Eternity.Server.Tests.dll"
-- packages\Codecov.1.0.3\tools\codecov.exe -f "coverage.xml"
+- Src\Server\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user "-target:C:\projects\Eternity\Src\Server\packages\xunit.runner.console.2.3.1\tools\net452\xunit.console.exe" "-filter:+[Eternity.Server]* -[Eternity.Server.Tests*]*" -output:"coverage.xml" -targetargs:"/testcontainer:""C:\projects\Eternity\Src\Server\Tests\bin\Debug\Eternity.Server.Tests.dll"
+- Src\Server\packages\Codecov.1.0.3\tools\codecov.exe -f "coverage.xml"
