@@ -17,7 +17,7 @@ namespace Unity.Core.Components.Moving
             var horizontal = Input.GetAxisRaw("Horizontal");
             var vertical = Input.GetAxisRaw("Vertical");
 
-            var delta = new Vector2(horizontal * 5, vertical * 5);
+            var delta = new Vector2(horizontal, vertical);
             
             _move.By(delta);
         }
