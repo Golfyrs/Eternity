@@ -1,0 +1,12 @@
+image: Visual Studio 2015
+
+before_build:
+- nuget restore Eternity.Server.sln
+
+build:
+  project: Eternity.Server.sln
+  verbosity: minimal
+
+test_script:
+- packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user "-target:C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\MSTest.exe" "-filter:+[Nothing]* -[Nothing.Tests*]*" -output:"coverage.xml" -targetargs:"/testcontainer:""C:\projects\Eternity\Src\Server\Tests\bin\Debug\Eternity.Server.Tests.dll"
+- packages\Codecov.1.0.3\tools\codecov.exe -f "coverage.xml"
