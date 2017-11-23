@@ -61,7 +61,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Eternity.Server.Core\Eternity.Server.Core.csproj">
+    <ProjectReference Include="..\Core\Eternity.Server.Core.csproj">
       <Project>{d070c5e5-07ee-42ff-b26e-a6e9ed9bab84}</Project>
       <Name>Eternity.Server.Core</Name>
     </ProjectReference>
