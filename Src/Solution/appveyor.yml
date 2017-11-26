@@ -1,0 +1,12 @@
+image: Visual Studio 2017
+
+before_build:
+- nuget restore Src\Solution\Eternity.sln
+
+build:
+  project: Src\Solution\Eternity.sln
+  verbosity: minimal
+
+test_script:
+- Src\Solution\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"C:\projects\Eternity\Src\Core\packages\xunit.runner.console.2.3.1\tools\net452\xunit.console.exe" "-filter:+[Eternity]* -[Eternity.Tests*]*" -output:"coverage.xml" -targetargs:"C:\projects\Eternity\Src\Solution\Tests\bin\Debug\Eternity.Tests.dll -noshadow"
+- Src\Solution\packages\Codecov.1.0.3\tools\codecov.exe -f "coverage.xml"
