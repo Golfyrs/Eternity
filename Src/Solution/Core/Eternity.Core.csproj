@@ -8,9 +8,9 @@
     <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Eternity.Core</RootNamespace>
+    <RootNamespace>Eternity</RootNamespace>
     <AssemblyName>Eternity.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <LangVersion>7</LangVersion>
   </PropertyGroup>
@@ -40,7 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Placeholder.cs" />
+    <Compile Include="Common\CompactDisposable.cs" />
+    <Compile Include="Common\Extensions\FunctionalExtensions.cs" />
+    <Compile Include="Common\Flows\ConstantFlow.cs" />
+    <Compile Include="Common\Flows\Core\IFlow.cs" />
+    <Compile Include="Common\Flows\Extensions\FlowExtensions.cs" />
+    <Compile Include="Common\Flows\MappedFlow.cs" />
+    <Compile Include="Common\Flows\MutableFlow.cs" />
+    <Compile Include="Common\Promises\Core\IPromise.cs" />
+    <Compile Include="Common\Promises\Core\Promise.cs" />
+    <Compile Include="Common\Promises\FakePromise.cs" />
+    <Compile Include="Common\Promises\InstantPromise.cs" />
+    <Compile Include="Common\Promises\ManualPromise.cs" />
+    <Compile Include="Core\Player.cs" />
+    <Compile Include="Core\World.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
