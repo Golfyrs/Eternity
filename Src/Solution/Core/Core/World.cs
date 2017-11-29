@@ -10,7 +10,9 @@ namespace Eternity.Core
         
         public Player Player(string name)
         {
-            return _playerByName[name];
+            return _playerByName.TryGetValue(name, out var player)
+                ? player
+                : null;
         }
         
         public IFlow<IEnumerable<Player>> Players() => _players;

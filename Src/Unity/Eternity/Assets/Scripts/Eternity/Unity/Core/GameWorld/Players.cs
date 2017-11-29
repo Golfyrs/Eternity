@@ -10,10 +10,11 @@ namespace Eternity.Unity.Core.GameWorld
     {
         public GameObject PlayerTemplate;
         
+        
         protected override void Weave(World idea)
         {
             PlayerTemplate.SetActive(false);
-            
+
             idea.Players().OnNext(Spawn);
             
             Spawn(idea.Players().Value());

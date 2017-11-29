@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Eternity.Core;
 using Eternity.Unity.Common.Components.Weaving;
 using UnityEngine;
@@ -16,10 +17,24 @@ namespace Eternity.Unity.Core.Movement
             _y.Dispose();
         }
         
+        private readonly List<Action> _actionsQueue = new List<Action>();
+
+        public PlayerPosition()
+        {
+            Updates.OnNext(() =>
+            {
+                var queue = _actionsQueue;
+                foreach (var item in queue)
+                    item();
+                
+                _actionsQueue.Clear();
+            });
+        }
+        
         protected override void Weave(Player idea)
         {
-            _x = idea.X.OnNext(x => Move(x, 0));
-            _y = idea.Y.OnNext(y => Move(0, y));
+            _x = idea.X.OnNext(x => _actionsQueue.Add(() => Move(x, 0)));
+            _y = idea.Y.OnNext(y => _actionsQueue.Add(() => Move(0, y)));
 
             transform.position = new Vector2(idea.X.Value(), idea.Y.Value());
         }

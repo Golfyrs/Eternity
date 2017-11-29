@@ -1,7 +1,9 @@
 ﻿using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using Eternity.Core.Dto;
 using Eternity.Network;
+using Eternity.Unity.Core;
 
 namespace Eternity.Unity.Common.DeliveryService
 {
@@ -31,8 +33,19 @@ namespace Eternity.Unity.Common.DeliveryService
         private void OnMessageArrive(Courier courier, Message message)
         {           
             var code = (ResponseCode) message.Code;
-            if (code == ResponseCode.Ok)
-                Log.Message("OK!");
+            if (code == ResponseCode.PlayerMoved)
+            {
+                Log.Message("Player moved!");
+                
+                var moveMessage = message.Body as MoveMessage;
+                var world = EternityApp.World;
+                var player = world.Player(moveMessage.Name);
+
+                if (player != null)
+                    player.Move((int) moveMessage.X, (int) moveMessage.Y);
+                else
+                    world.Spawn(moveMessage.Name, (int) moveMessage.X, (int) moveMessage.Y);
+            }
         }
 
         public void Send<T>(RequestCode code, T message)

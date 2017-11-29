@@ -53,12 +53,12 @@ namespace Eternity.Server
                 case RequestCode.Move:
                     var moveMessage = message.Body as MoveMessage;
 
-                    Console.WriteLine($"X: {moveMessage.X}, Y: {moveMessage.Y}");
+                    Console.WriteLine($"Name: {moveMessage.Name} X: {moveMessage.X}, Y: {moveMessage.Y}");
 
                     Respond(courier, ResponseCode.Ok);
                     
                     foreach (var otherCourier in _couriers.Where(x => x != courier))
-                        Respond(otherCourier, ResponseCode.Ok, moveMessage);
+                        Respond(otherCourier, ResponseCode.PlayerMoved, moveMessage);
                         
                     break;
             }

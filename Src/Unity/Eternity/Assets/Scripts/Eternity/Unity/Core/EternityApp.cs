@@ -13,6 +13,7 @@ namespace Eternity.Unity.Core
         public static void Initialize()
         {
             World.Spawn("TestPlayer", 0, 0);
+            World.Spawn("XyiSobaki", 1, 1);
 
             Server = new Common.DeliveryService.Server();
             var _ = Server.Start();

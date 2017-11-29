@@ -30,6 +30,7 @@ namespace Eternity.Network
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex);
+                    break;
                 }
             }
         }
