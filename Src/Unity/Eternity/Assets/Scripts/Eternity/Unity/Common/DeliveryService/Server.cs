@@ -8,8 +8,8 @@ namespace Assets.Scripts.Eternity.Unity.Common.DeliveryService
     {
         public PostOffice PostOffice { get; private set; }
 
-        private static DeliveryServiceDepartment _deliveryServiceDepartment;
         private static DeliveryServiceConnection _deliveryServiceConnection;
+        private static DeliveryServiceDepartment _deliveryServiceDepartment;
 
         public async Task Start()
         {

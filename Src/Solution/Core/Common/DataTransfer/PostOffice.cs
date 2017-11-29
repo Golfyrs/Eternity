@@ -20,6 +20,9 @@ namespace Eternity.Common.DataTransfer
 
         public void SendParcel<T>(T data, ServerMethods method)
         {
+            if (_department == null)
+                throw new Exception("Department is null, you need to connect to the server!");
+
             var pack = PackingService.Packing(data, method);
             var _ = _department.Send(pack);
         }
