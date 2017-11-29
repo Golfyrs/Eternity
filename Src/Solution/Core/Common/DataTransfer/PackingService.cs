@@ -7,7 +7,7 @@ namespace Eternity.Common.DataTransfer
 {
     public static class PackingService
     {
-        public static byte[] Packing<T>(T data, ServerMethods method)
+        public static byte[] Packing<T>(T data, RequestType method)
         {
             var body = Serialization(data);
             var head = BitConverter.GetBytes(body.Length);
@@ -17,12 +17,12 @@ namespace Eternity.Common.DataTransfer
             return head.Concat(methodBytes).Concat(body).ToArray();
         }
 
-        public static T Unpacking<T>(byte[] bytes)
+        public static object Unpacking(byte[] bytes)
         {
             var memStream = new MemoryStream(bytes, 0, bytes.Length);
             memStream.Seek(0, SeekOrigin.Begin);
 
-            return (T) new BinaryFormatter().Deserialize(memStream);
+            return new BinaryFormatter().Deserialize(memStream);
         }
 
         private static byte[] Serialization<T>(T data)

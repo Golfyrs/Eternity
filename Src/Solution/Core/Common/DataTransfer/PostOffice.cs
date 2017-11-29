@@ -11,6 +11,9 @@ namespace Eternity.Common.DataTransfer
     // Для первой итерации оставлю как статический класс, дальше стоит добавить интерфес + прокидывать через dependency injection.
     public class PostOffice
     {
+        // Временное событие для тестирования.
+        public static Action<String> PackageArrived;
+
         private readonly DeliveryServiceDepartment _department;
 
         public PostOffice(DeliveryServiceDepartment client)
@@ -18,7 +21,7 @@ namespace Eternity.Common.DataTransfer
             _department = client;
         }
 
-        public void SendParcel<T>(T data, ServerMethods method)
+        public void Send<T>(T data, RequestType method)
         {
             if (_department == null)
                 throw new Exception("Department is null, you need to connect to the server!");
@@ -27,15 +30,16 @@ namespace Eternity.Common.DataTransfer
             var _ = _department.Send(pack);
         }
 
-        public static void AcceptParcel(Message message)
+        public static void Accept(Message message)
         {
             switch (message.Method)
             {
-                case ServerMethods.Move:
-                    var data = message.GetData<Position>();
+                case RequestType.Move:
+                    var data = message.Body as Position;
                     
                     // Вызов какого-то Core класса, для обновления позиции юзера, тут 100% не хватает id или имени игрока.
                     Console.WriteLine($"X: {data.X}, Y: {data.Y}");
+                    PackageArrived?.Invoke($"X: {data.X}, Y: {data.Y}");
                     break;
             }
         }

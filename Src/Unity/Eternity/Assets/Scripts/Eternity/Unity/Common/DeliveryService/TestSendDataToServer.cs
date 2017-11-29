@@ -15,7 +15,8 @@ namespace Assets.Scripts.Eternity.Unity.Common.DeliveryService
             {
                 _lastPosition = transform.position;
                 var position = new Position(_lastPosition.x, _lastPosition.y);
-                EternityApp.Server.PostOffice.SendParcel(position, ServerMethods.Move);
+
+                EternityApp.Server.PostOffice.Send(position, RequestType.Move);
             }
         }
     }

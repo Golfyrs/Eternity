@@ -41,11 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\CompactDisposable.cs" />
+    <Compile Include="Common\DataTransfer\DeliveryServiceConnection.cs" />
     <Compile Include="Common\DataTransfer\DeliveryServiceDepartment.cs" />
     <Compile Include="Common\DataTransfer\Message.cs" />
     <Compile Include="Common\DataTransfer\PostOffice.cs" />
     <Compile Include="Common\DataTransfer\PackingService.cs" />
-    <Compile Include="Common\DataTransfer\ServerMethods.cs" />
+    <Compile Include="Common\DataTransfer\SerializationService.cs" />
+    <Compile Include="Common\DataTransfer\RequestType.cs" />
     <Compile Include="Common\Extensions\FunctionalExtensions.cs" />
     <Compile Include="Common\Flows\ConstantFlow.cs" />
     <Compile Include="Common\Flows\Core\IFlow.cs" />

@@ -6,6 +6,7 @@ namespace Eternity.Common.DataTransfer
 {
     public class DeliveryServiceDepartment : IDisposable
     {
+        private static long _count;
         private readonly NetworkStream _networkStream;
 
         public DeliveryServiceDepartment(TcpClient client)
@@ -23,8 +24,8 @@ namespace Eternity.Common.DataTransfer
             Console.WriteLine("Reading from client.");
 
             var message = await ReadFromStreamAsync();
-            
-            Console.WriteLine("Reading ended.");
+            _count++;
+            Console.WriteLine("Reading ended. " + _count);
             
             return message;
         }
@@ -32,6 +33,23 @@ namespace Eternity.Common.DataTransfer
         public void Dispose()
         {
             _networkStream.Dispose();
+        }
+        
+        public async Task StartListeningStream()
+        {
+            while (true)
+            {
+                try
+                {
+                    var message = await Get();
+                    PostOffice.Accept(message);
+                    // После получения новых координат разослать данные всем подключенным клиентам.
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+            }
         }
 
         private async Task<Message> ReadFromStreamAsync()

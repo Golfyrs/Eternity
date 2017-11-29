@@ -8,18 +8,16 @@ namespace Server.Console
     {
         public static void Main(string[] args)
         {
-            var deliveryService = new DeliveryServiceListener();
-            // Нужно подумать нужен ли классу `DeliveryServiceListener` IpAddress и порт в дальнейшем,
-            // если да то перенести заполнение в конструктор.
-            var _ = deliveryService.Listener( IPAddress.Broadcast, 5000 );
+            var deliveryService = new DeliveryServiceListener(IPAddress.Parse("127.0.0.1"), 5000);
+            var _ = deliveryService.Start();
+
             System.Console.WriteLine("Start server.");
 
             ConsoleKeyInfo keyInfo;
-
             do
                 keyInfo = System.Console.ReadKey(); while (keyInfo.Key != ConsoleKey.Escape);
             
-            deliveryService.StopListener();
+            deliveryService.Stop();
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Eternity.Unity.Common.DeliveryService;
-using Eternity.Common.DataTransfer;
 using Eternity.Core;
 using UnityEngine;
 
