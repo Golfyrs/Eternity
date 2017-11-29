@@ -18,7 +18,7 @@ namespace Eternity.Unity.Core.GameWorld
             
             Spawn(idea.Players().Value());
 
-            idea.Spawn("Test1", 2, 2);
+            // idea.Spawn("Test1", 2, 2);
         }
 
         private void Spawn(IEnumerable<Player> players)

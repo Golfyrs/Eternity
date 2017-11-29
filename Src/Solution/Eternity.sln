@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eternity.Tests", "Tests\Eternity.Tests.csproj", "{1016F300-7DED-4357-9ABC-EF0B76FC905F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eternity.Core", "Core\Eternity.Core.csproj", "{BE37727D-B57E-4E8B-A3C7-FFD92B08275A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eternity.Server", "Server\Eternity.Server.csproj", "{1881D97E-594F-4915-BEB1-CC6ABA9F14C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server.Console", "Server.Console\Server.Console.csproj", "{36EC03D3-8540-45AF-B538-FA143B0EFFF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +29,15 @@ Global
 		{1881D97E-594F-4915-BEB1-CC6ABA9F14C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1881D97E-594F-4915-BEB1-CC6ABA9F14C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1881D97E-594F-4915-BEB1-CC6ABA9F14C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36EC03D3-8540-45AF-B538-FA143B0EFFF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36EC03D3-8540-45AF-B538-FA143B0EFFF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36EC03D3-8540-45AF-B538-FA143B0EFFF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36EC03D3-8540-45AF-B538-FA143B0EFFF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3CF63454-735A-478C-AB22-76C74353C79B}
 	EndGlobalSection
 EndGlobal

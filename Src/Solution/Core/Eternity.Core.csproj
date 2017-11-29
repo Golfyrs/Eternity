@@ -41,6 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\CompactDisposable.cs" />
+    <Compile Include="Common\DataTransfer\DeliveryServiceDepartment.cs" />
+    <Compile Include="Common\DataTransfer\Message.cs" />
+    <Compile Include="Common\DataTransfer\PostOffice.cs" />
+    <Compile Include="Common\DataTransfer\PackingService.cs" />
+    <Compile Include="Common\DataTransfer\ServerMethods.cs" />
     <Compile Include="Common\Extensions\FunctionalExtensions.cs" />
     <Compile Include="Common\Flows\ConstantFlow.cs" />
     <Compile Include="Common\Flows\Core\IFlow.cs" />
@@ -53,6 +58,7 @@
     <Compile Include="Common\Promises\InstantPromise.cs" />
     <Compile Include="Common\Promises\ManualPromise.cs" />
     <Compile Include="Core\Player.cs" />
+    <Compile Include="Core\Position.cs" />
     <Compile Include="Core\World.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
