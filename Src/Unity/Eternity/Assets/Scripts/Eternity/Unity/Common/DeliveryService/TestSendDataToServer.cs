@@ -1,9 +1,9 @@
-﻿using Eternity.Common.DataTransfer;
-using Eternity.Core;
+﻿using Eternity.Core.Dto;
+using Eternity.Network;
 using Eternity.Unity.Core;
 using UnityEngine;
 
-namespace Assets.Scripts.Eternity.Unity.Common.DeliveryService
+namespace Eternity.Unity.Common.DeliveryService
 {
     public class TestSendDataToServer : MonoBehaviour
     {
@@ -11,13 +11,18 @@ namespace Assets.Scripts.Eternity.Unity.Common.DeliveryService
 
         public void Update()
         {
-            if (transform.position != _lastPosition)
+            if (transform.position == _lastPosition)
+                return;
+            
+            _lastPosition = transform.position;
+            var position = new MoveMessage
             {
-                _lastPosition = transform.position;
-                var position = new Position(_lastPosition.x, _lastPosition.y);
+                X = _lastPosition.x,
+                Y = _lastPosition.y,
+                Name = "Test"
+            };
 
-                EternityApp.Server.PostOffice.Send(position, RequestType.Move);
-            }
+            EternityApp.Server.Send(RequestCode.Move, position);
         }
     }
 }

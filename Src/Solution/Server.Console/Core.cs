@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Net;
-using Eternity.Server.Common.DeliveryService;
+using Eternity.Server;
 
 namespace Server.Console
 {
@@ -8,16 +7,12 @@ namespace Server.Console
     {
         public static void Main(string[] args)
         {
-            var deliveryService = new DeliveryServiceListener(IPAddress.Parse("127.0.0.1"), 5000);
-            var _ = deliveryService.Start();
-
-            System.Console.WriteLine("Start server.");
-
+            var server = new EternityServer("25.70.57.150", 5555);
+            server.Start();
+            
             ConsoleKeyInfo keyInfo;
             do
                 keyInfo = System.Console.ReadKey(); while (keyInfo.Key != ConsoleKey.Escape);
-            
-            deliveryService.Stop();
         }
     }
 }
