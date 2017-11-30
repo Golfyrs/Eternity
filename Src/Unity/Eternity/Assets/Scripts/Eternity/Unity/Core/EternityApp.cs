@@ -7,7 +7,7 @@ namespace Eternity.Unity.Core
     public static class EternityApp
     {
         public static World World = new World();
-        public static Common.DeliveryService.Server Server {  get; private set; }
+        public static DeliveryService.Server Server {  get; private set; }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         public static void Initialize()
@@ -15,7 +15,7 @@ namespace Eternity.Unity.Core
             World.Spawn("TestPlayer", 0, 0);
             World.Spawn("XyiSobaki", 1, 1);
 
-            Server = new Common.DeliveryService.Server();
+            Server = new DeliveryService.Server();
             var _ = Server.Start();
         }
     }
