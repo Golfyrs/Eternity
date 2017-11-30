@@ -7,7 +7,7 @@ namespace Eternity.Unity.Core
     // TODO: Only dependency injection, please (no %*$@#!ing public state here).
     public class EternityApp : MonoBehaviour
     {
-        private static EternityApp Instance;
+        private static EternityApp _instance;
                 
         public static World World = new World();
         public static DeliveryService.Server Server {  get; private set; }
@@ -15,11 +15,12 @@ namespace Eternity.Unity.Core
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         public static void Initialize()
         {
-            Instance = new GameObject("_root")
+            _instance = new GameObject("_root")
             {
                 hideFlags = HideFlags.HideAndDontSave
             }.AddComponent<EternityApp>();
-            World.Spawn("TestPlayer", 0, 0);
+            
+            World.Spawn("Joshua", 0, 0);
             World.Spawn("XyiSobaki", 1, 1);
 
             Server = new DeliveryService.Server();
