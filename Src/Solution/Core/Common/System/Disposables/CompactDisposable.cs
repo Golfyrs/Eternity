@@ -1,6 +1,5 @@
-﻿using System;
-
-namespace Eternity
+﻿// ReSharper disable once CheckNamespace
+namespace System
 {
     public class CompactDisposable : IDisposable
     {

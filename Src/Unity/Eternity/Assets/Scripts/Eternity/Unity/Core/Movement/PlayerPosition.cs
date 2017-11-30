@@ -21,7 +21,7 @@ namespace Eternity.Unity.Core.Movement
             _x = idea.X.OnNext(x => Move(x, 0));
             _y = idea.Y.OnNext(y => Move(0, y));
 
-            transform.position = new Vector2(idea.X.Value(), idea.Y.Value());
+            transform.position = new Vector2(idea.X.Current, idea.Y.Current);
         }
 
         private void Move(int x, int y)
