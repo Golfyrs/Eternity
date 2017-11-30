@@ -24,7 +24,7 @@ namespace Eternity.Tests.Core.Common.Reactive.Fluxes
             }
 
             [Fact]
-            public void OnNext_ShouldThrowArgumentNullExceptionIfActionIsNull()
+            public void OnNext_ShouldThrowArgumentNullException_IfActionIsNull()
             {
                 Assert.Throws<ArgumentNullException>(() => _flux.OnNext(null));
             }

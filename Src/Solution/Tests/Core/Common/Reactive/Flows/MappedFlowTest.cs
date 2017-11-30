@@ -35,17 +35,17 @@ namespace Eternity.Tests.Core.Common.Reactive.Flows
         }
         
         [Fact]
-        public void Constructor_ShouldThrowArgumentNullExceptionIfSourceIsNull() =>
+        public void Constructor_ShouldThrowArgumentNullException_IfSourceIsNull() =>
             Assert.Throws<ArgumentNullException>(
                 () => new MappedFlow<int, string>(null, x => x.ToString() + "d"));
         
         [Fact]
-        public void Constructor_ShouldThrowArgumentNullExceptionIfFuncIsNull() =>
+        public void Constructor_ShouldThrowArgumentNullException_IfFuncIsNull() =>
             Assert.Throws<ArgumentNullException>(
                 () => new MappedFlow<int, string>(_source, null));
 
         [Fact]
-        public void OnNext_ShouldThrowArgumentNullExceptionIfActionIsNull() =>
+        public void OnNext_ShouldThrowArgumentNullException_IfActionIsNull() =>
             Assert.Throws<ArgumentNullException>(
                 () => new MappedFlow<int, string>(_source, x => x.ToString() + "d").OnNext(null));
     }

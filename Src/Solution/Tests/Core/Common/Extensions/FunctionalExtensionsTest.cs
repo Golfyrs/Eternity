@@ -13,7 +13,7 @@ namespace Eternity.Tests.Core.Common.Extensions
                 Assert.Equal(10, 1.As(x => x + 1).As(x => x * 10).As(x => x / 2));
                         
             [Fact]
-            public void As_ShouldThrowArgumentNullExceptionIfMapIsNull() =>
+            public void As_ShouldThrowArgumentNullException_IfMapIsNull() =>
                 Assert.Throws<ArgumentNullException>(() => "".As<string, int>(null));
         }
 
@@ -30,7 +30,7 @@ namespace Eternity.Tests.Core.Common.Extensions
             }
             
             [Fact]
-            public void Do_ShouldPropagateIfActionIsNull() => "".Do(null);
+            public void Do_ShouldPropagate_IfActionIsNull() => "".Do(null);
         }
     }
 }

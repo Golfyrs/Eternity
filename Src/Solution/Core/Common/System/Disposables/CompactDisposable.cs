@@ -7,6 +7,9 @@ namespace System
 
         public CompactDisposable(Action initialize, Action dispose)
         {
+            if (initialize == null) throw new ArgumentNullException(nameof(initialize));
+            if (dispose == null) throw new ArgumentNullException(nameof(dispose));
+
             _dispose = dispose;
 
             initialize();

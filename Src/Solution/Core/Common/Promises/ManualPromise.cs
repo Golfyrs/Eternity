@@ -40,7 +40,7 @@ namespace Eternity.Promises
                 return;
             
             _isSatisfied = true;
-            _continuation();
+            _continuation?.Invoke();
         }
     }
 }
