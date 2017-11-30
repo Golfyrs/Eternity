@@ -40,13 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\CompactDisposable.cs" />
     <Compile Include="Common\Extensions\FunctionalExtensions.cs" />
-    <Compile Include="Common\Flows\ConstantFlow.cs" />
-    <Compile Include="Common\Flows\Core\IFlow.cs" />
-    <Compile Include="Common\Flows\Extensions\FlowExtensions.cs" />
-    <Compile Include="Common\Flows\MappedFlow.cs" />
-    <Compile Include="Common\Flows\MutableFlow.cs" />
     <Compile Include="Common\Network\DeliveryServiceConnection.cs" />
     <Compile Include="Common\Network\Courier.cs" />
     <Compile Include="Common\Network\DeliveryServiceListener.cs" />
@@ -60,6 +54,14 @@
     <Compile Include="Common\Promises\FakePromise.cs" />
     <Compile Include="Common\Promises\InstantPromise.cs" />
     <Compile Include="Common\Promises\ManualPromise.cs" />
+    <Compile Include="Common\Reactive\Core\IFlow.cs" />
+    <Compile Include="Common\Reactive\Core\IFlux.cs" />
+    <Compile Include="Common\Reactive\Extensions\FlowExtensions.cs" />
+    <Compile Include="Common\Reactive\Flows\MappedFlow.cs" />
+    <Compile Include="Common\Reactive\Fluxes\PureFlux.cs" />
+    <Compile Include="Common\System\Disposables\CompactDisposable.cs" />
+    <Compile Include="Common\System\Disposables\Disposable.cs" />
+    <Compile Include="Common\System\Disposables\FakeDisposable.cs" />
     <Compile Include="Core\Dto\MoveMessage.cs" />
     <Compile Include="Core\Player.cs" />
     <Compile Include="Core\World.cs" />

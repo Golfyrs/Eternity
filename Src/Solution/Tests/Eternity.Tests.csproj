@@ -34,6 +34,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Core\Common\Reactive\Extensions\FlowExtensionsTest.cs" />
+    <Compile Include="Core\Common\Reactive\Flows\MappedFlowTest.cs" />
+    <Compile Include="Core\Common\Reactive\Fluxes\PureFluxTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Core\Eternity.Core.csproj">
       <Project>{be37727d-b57e-4e8b-a3c7-ffd92b08275a}</Project>
       <Name>Eternity.Core</Name>
@@ -69,9 +74,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="TestClient.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

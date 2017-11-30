@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Eternity.Flows;
+using Eternity.Reactive;
 using Eternity.Unity.Common.Attributes;
 using UnityEngine;
 
@@ -11,7 +11,7 @@ namespace Eternity.Unity.Common.Components
     public abstract class EternityComponent : MonoBehaviour
     {        
         // TODO: Move somewhere.
-        private readonly MutableFlow _updates = new MutableFlow();
+        private readonly IFlux _updates = new PureFlux();
         protected IFlow Updates => _updates;
         
         private void Awake()
@@ -25,7 +25,7 @@ namespace Eternity.Unity.Common.Components
             Initialize();
         }
 
-        private void Update() => _updates.Push();
+        private void Update() => _updates.Pulse();
         
         protected virtual void Initialize() { }
         

@@ -1,18 +1,16 @@
 ﻿using System;
 
-namespace Eternity.Flows
+namespace Eternity.Reactive
 {
     public interface IFlow
     {
-        // TODO: Unsubscribe.
         IDisposable OnNext(Action action);
     }
     
     public interface IFlow<T>
     {
-        // TODO: Unsubscribe.
         IDisposable OnNext(Action<T> action);
 
-        T Value();
+        T Current { get; }
     }    
 }

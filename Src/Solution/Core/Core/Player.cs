@@ -1,11 +1,11 @@
-﻿using Eternity.Flows;
+﻿using Eternity.Reactive;
 
 namespace Eternity.Core
 {
     public class Player
     {
-        private readonly MutableFlow<int> _xFlow = new MutableFlow<int>();
-        private readonly MutableFlow<int> _yFlow = new MutableFlow<int>();
+        private readonly IFlux<int> _xFlow = new PureFlux<int>();
+        private readonly IFlux<int> _yFlow = new PureFlux<int>();
 
         public Player(string name)
         {
@@ -19,8 +19,8 @@ namespace Eternity.Core
 
         public void Move(int x, int y)
         {
-            _xFlow.Push(x);
-            _yFlow.Push(y);
+            _xFlow.Pulse(x);
+            _yFlow.Pulse(y);
         }
     }
 }

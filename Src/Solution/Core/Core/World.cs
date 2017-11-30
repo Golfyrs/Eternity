@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using Eternity.Flows;
+using Eternity.Reactive;
 
 namespace Eternity.Core
 {
     public class World
     {
         private readonly IDictionary<string, Player> _playerByName = new Dictionary<string, Player>();
-        private readonly MutableFlow<IEnumerable<Player>> _players = new MutableFlow<IEnumerable<Player>>();
+        private readonly IFlux<IEnumerable<Player>> _players = new PureFlux<IEnumerable<Player>>();
         
         public Player Player(string name)
         {
@@ -23,7 +23,7 @@ namespace Eternity.Core
             player.Move(x, y);
 
             _playerByName[name] = player;
-            _players.Push(_playerByName.Values); // TODO: Holy crap.
+            _players.Pulse(_playerByName.Values); // TODO: Holy crap.
         }
     }
 }
