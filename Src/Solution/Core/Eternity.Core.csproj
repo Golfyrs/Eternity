@@ -58,6 +58,7 @@
     <Compile Include="Common\Reactive\Core\IFlux.cs" />
     <Compile Include="Common\Reactive\Extensions\FlowExtensions.cs" />
     <Compile Include="Common\Reactive\Flows\MappedFlow.cs" />
+    <Compile Include="Common\Reactive\Flows\DispatchedFlow.cs" />
     <Compile Include="Common\Reactive\Fluxes\PureFlux.cs" />
     <Compile Include="Common\System\Disposables\CompactDisposable.cs" />
     <Compile Include="Common\System\Disposables\Disposable.cs" />

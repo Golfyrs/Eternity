@@ -14,7 +14,7 @@ namespace Eternity.Unity.Core.DeliveryService
 
         public void Dispose()
         {
-            _courier.Dispose();
+            _courier?.Dispose();
         }
         
         public async Task Start()

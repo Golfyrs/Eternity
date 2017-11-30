@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using System.Threading.Tasks;
 using Eternity.Core.Dto;
 using Eternity.Network;
 using Eternity.Server.Common.DeliveryService;
