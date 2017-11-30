@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Core\Common\Extensions\FunctionalExtensionsTest.cs" />
     <Compile Include="Core\Common\Reactive\Extensions\FlowExtensionsTest.cs" />
     <Compile Include="Core\Common\Reactive\Flows\MappedFlowTest.cs" />
     <Compile Include="Core\Common\Reactive\Fluxes\PureFluxTest.cs" />

@@ -15,7 +15,10 @@ namespace System
         /// <typeparam name="TResult">Type of result object that will represent <paramref name="self"/>.</typeparam>
         /// <returns>Representation of <paramref name="self"/> in <typeparamref name="TResult"/> type.</returns>
         public static TResult As<TInput, TResult>(this TInput self, Func<TInput, TResult> map)
-            => map(self);
+        {
+            if (map == null) throw new ArgumentNullException(nameof(map));
+            return map(self);
+        }
 
         /// <summary>
         ///     Performs specified <see cref="Action"/> function on object and returns this object.
@@ -26,7 +29,7 @@ namespace System
         /// <returns><code>this</code> object.</returns>
         public static T Do<T>(this T self, Action<T> apply)
         {
-            apply(self);
+            apply?.Invoke(self);
             return self;
         }
     }

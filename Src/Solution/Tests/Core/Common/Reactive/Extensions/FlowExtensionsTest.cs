@@ -11,7 +11,7 @@ namespace Eternity.Tests.Core.Common.Reactive.Extensions
         
         [Fact]
         public void As_ShouldReturnMappedFlow()
-        {
+        {    
             var flow = _source.As(x => x.ToString() + "d");
 
             Assert.IsType<MappedFlow<int, string>>(flow);
