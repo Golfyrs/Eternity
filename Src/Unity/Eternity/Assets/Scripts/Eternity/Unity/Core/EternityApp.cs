@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Eternity.Unity.Core
 {
     // TODO: Only dependency injection, please (no %*$@#!ing public state here).
-    public static class EternityApp
+    public class EternityApp : MonoBehaviour
     {
         public static World World = new World();
         public static DeliveryService.Server Server {  get; private set; }
@@ -17,6 +17,11 @@ namespace Eternity.Unity.Core
 
             Server = new DeliveryService.Server();
             var _ = Server.Start();
+        }
+
+        private void OnApplicationQuit()
+        {
+            Server.Dispose();
         }
     }
 }

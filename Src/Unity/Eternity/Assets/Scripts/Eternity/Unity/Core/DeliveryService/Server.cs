@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Eternity.Core.Dto;
@@ -7,10 +8,15 @@ using Eternity.Unity.Common;
 
 namespace Eternity.Unity.Core.DeliveryService
 {
-    public class Server
+    public class Server : IDisposable
     {
         private static Courier _courier;
 
+        public void Dispose()
+        {
+            _courier.Dispose();
+        }
+        
         public async Task Start()
         {
             var tuple = await new DeliveryServiceConnection().Connect(IPAddress.Parse("25.70.57.150"), 5555);

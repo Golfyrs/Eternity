@@ -6,15 +6,23 @@ using System.Threading.Tasks;
 
 namespace Eternity.Network
 {
-    public class Courier
-    {
-        public event Action<Courier, Message> MessageArrived;
-        
+    public class Courier : IDisposable
+    {        
+        private readonly TcpClient _client;
         private readonly NetworkStream _networkStream;
 
         public Courier(TcpClient client)
         {
+            _client = client;
             _networkStream = client.GetStream();
+        }
+        
+        public event Action<Courier, Message> MessageArrived;
+        
+        public void Dispose()
+        {
+            _client.Close();
+            _networkStream.Close();
         }
         
         public async Task StartListeningStream()
@@ -35,22 +43,40 @@ namespace Eternity.Network
             }
         }
         
-        public Task Send<T>(ushort code, T message)
+        public async Task<bool> Send<T>(ushort code, T message)
         {
-            var stream = _networkStream;
-            var serializedMessage = Serialize(message);
-            
-            var packet = new Packet(code, serializedMessage);
-            return Protocol.PackAsync(stream, packet);
+            try
+            {
+                var stream = _networkStream;
+                var serializedMessage = Serialize(message);
+
+                var packet = new Packet(code, serializedMessage);
+                await Protocol.PackAsync(stream, packet);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
         }
         
-        public Task Send(ushort code)
+        public async Task<bool> Send(ushort code)
         {
-            var stream = _networkStream;
-            var serializedMessage = new byte[0];
-            
-            var packet = new Packet(code, serializedMessage);
-            return Protocol.PackAsync(stream, packet);
+            try
+            {
+                var stream = _networkStream;
+                var serializedMessage = new byte[0];
+
+                var packet = new Packet(code, serializedMessage);
+                await Protocol.PackAsync(stream, packet);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
         }
         
         private static async Task<Message> Get(Stream stream)

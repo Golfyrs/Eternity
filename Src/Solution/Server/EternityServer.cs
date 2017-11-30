@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Threading.Tasks;
 using Eternity.Core.Dto;
 using Eternity.Network;
 using Eternity.Server.Common.DeliveryService;
@@ -56,18 +57,26 @@ namespace Eternity.Server
                     Console.WriteLine($"Name: {moveMessage.Name} X: {moveMessage.X}, Y: {moveMessage.Y}");
 
                     Respond(courier, ResponseCode.Ok);
-                    
-                    foreach (var otherCourier in _couriers.Where(x => x != courier))
+
+                    foreach (var otherCourier in _couriers.Where(x => x != courier).ToList())
                         Respond(otherCourier, ResponseCode.PlayerMoved, moveMessage);
-                        
+                    
                     break;
             }
         }
 
-        private static async void Respond(Courier courier, ResponseCode code) =>
-            await courier.Send((ushort) code);
-        
-        private static async void Respond<T>(Courier courier, ResponseCode code, T message) =>
-            await courier.Send((ushort) code, message);
+        private async void Respond(Courier courier, ResponseCode code)
+        {
+            var success = await courier.Send((ushort) code);
+            if (!success)
+                _couriers.Remove(courier);
+        }
+
+        private async void Respond<T>(Courier courier, ResponseCode code, T message)
+        {
+            var success = await courier.Send((ushort) code, message);
+            if (!success)
+                _couriers.Remove(courier);
+        }
     }
 }
