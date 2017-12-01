@@ -39,6 +39,7 @@
     <Compile Include="Core\Common\Promises\InstantPromiseTest.cs" />
     <Compile Include="Core\Common\Promises\ManualPromiseTest.cs" />
     <Compile Include="Core\Common\Reactive\Extensions\FlowExtensionsTest.cs" />
+    <Compile Include="Core\Common\Reactive\Flows\DebouncedFlowTest.cs" />
     <Compile Include="Core\Common\Reactive\Flows\MappedFlowTest.cs" />
     <Compile Include="Core\Common\Reactive\Fluxes\PureFluxTest.cs" />
     <Compile Include="Core\Common\System\CompactDisposableTest.cs" />

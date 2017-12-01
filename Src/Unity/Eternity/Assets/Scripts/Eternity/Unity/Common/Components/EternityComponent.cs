@@ -15,6 +15,18 @@ namespace Eternity.Unity.Common.Components
     /// </summary>
     public abstract class EternityComponent : MonoBehaviour
     {
+        private event Action Destroyed;
+
+        protected void DisposeOnDestroy(IDisposable disposable) =>
+            Destroyed += disposable.Dispose;
+        
+        /// <summary>
+        ///     Called at the Unity post-<see cref="Awake"/> time.
+        /// </summary>
+        protected virtual void Initialize() { }
+        
+        #region MonoBehaviour
+        
         private void Awake()
         {
             // Injection.
@@ -26,11 +38,13 @@ namespace Eternity.Unity.Common.Components
             
             Initialize();
         }
-        
-        /// <summary>
-        ///     Called at the post-Awake time.
-        /// </summary>
-        protected virtual void Initialize() { }
+
+        private void OnDestroy()
+        {
+            Destroyed?.Invoke();
+        }
+
+        #endregion
         
         #region Helpers
 

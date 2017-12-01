@@ -7,30 +7,23 @@ using UnityEngine;
 namespace Eternity.Unity.Core.Movement
 {
     public class PlayerPosition : Weaver<Player>
-    {
-        private IDisposable _x;
-        private IDisposable _y;
-        
-        private void OnDestroy()
+    {        
+        protected override void Weave(Player player)
         {
-            _x.Dispose();
-            _y.Dispose();
-        }
-        
-        protected override void Weave(Player idea)
-        {
-            _x = idea.X.OnMainThread().OnNext(x => Move(x, 0));
-            _y = idea.Y.OnMainThread().OnNext(y => Move(0, y));
-
-            transform.position = new Vector2(idea.X.Current, idea.Y.Current);
-        }
-
-        private void Move(int x, int y)
-        {
-            var delta = new Vector3(x, y);
+            player.X
+                .OnMainThread()
+                .OnNext(x => Move(x, player.Y.Current))
+                .Do(DisposeOnDestroy);
             
-            transform.position = transform.position
-                .Lerp(transform.position + delta, 5 * Time.deltaTime);
+            player.Y
+                .OnMainThread()
+                .OnNext(y => Move(player.X.Current, y))
+                .Do(DisposeOnDestroy);
+
+            Move(player.X.Current, player.Y.Current);
         }
+
+        private void Move(int x, int y) =>
+            transform.position = new Vector3(x, y);
     }
 }

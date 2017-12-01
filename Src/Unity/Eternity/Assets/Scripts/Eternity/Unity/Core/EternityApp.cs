@@ -11,8 +11,10 @@ namespace Eternity.Unity.Core
         public static DeliveryService.Server Server {  get; private set; }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        private static async void Initialize()
+        private static void Initialize()
         {
+            Log.Message("Initialized.");
+            
             new GameObject("_root")
             {
                 hideFlags = HideFlags.HideAndDontSave
@@ -21,6 +23,11 @@ namespace Eternity.Unity.Core
             World.Spawn("Joshua", 0, 0);
             World.Spawn("XyiSobaki", 1, 1);
 
+            InitializeAsync();
+        }
+
+        private static async void InitializeAsync()
+        {
             Server = new DeliveryService.Server();
             await Server.Start();
         }
