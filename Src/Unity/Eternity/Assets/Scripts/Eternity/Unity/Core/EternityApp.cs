@@ -1,4 +1,4 @@
-﻿using Eternity.Core;
+﻿using Eternity.Game;
 using Eternity.Unity.Common;
 using UnityEngine;
 

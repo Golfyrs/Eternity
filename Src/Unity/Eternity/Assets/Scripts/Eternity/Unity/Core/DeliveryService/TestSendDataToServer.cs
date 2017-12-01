@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Eternity.Core;
-using Eternity.Core.Dto;
+using Eternity.Dto;
+using Eternity.Game;
 using Eternity.Network;
 using Eternity.Unity.Common.Components.Weaving;
 

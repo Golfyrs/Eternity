@@ -1,5 +1,5 @@
 ﻿using System;
-using Eternity.Core;
+using Eternity.Game;
 using Eternity.Unity.Common.Components.Weaving;
 using UnityEngine;
 

@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using Eternity.Core;
+using Eternity.Game;
 using Eternity.Unity.Common.Components.Weaving;
 using Eternity.Unity.Common.Reactive.Extensions;
 using UnityEngine;

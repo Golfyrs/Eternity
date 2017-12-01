@@ -1,4 +1,4 @@
-﻿using Eternity.Core;
+﻿using Eternity.Game;
 using Eternity.Unity.Common.Components.Weaving;
 
 namespace Eternity.Unity.Core.Patterns

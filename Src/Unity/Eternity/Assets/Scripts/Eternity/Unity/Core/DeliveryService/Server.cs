@@ -2,7 +2,7 @@
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using Eternity.Core.Dto;
+using Eternity.Dto;
 using Eternity.Network;
 using Eternity.Unity.Common;
 

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Eternity.Core;
+using Eternity.Game;
 using Eternity.Unity.Common.Components.Weaving;
 using Eternity.Unity.Core.Patterns;
 using UnityEngine;
@@ -9,7 +9,6 @@ namespace Eternity.Unity.Core.GameWorld
     public class Players : Weaver<World>
     {
         public GameObject PlayerTemplate;
-        
         
         protected override void Weave(World idea)
         {
