@@ -30,10 +30,11 @@ namespace Eternity.Unity.Core.DeliveryService
             ThreadPool.QueueUserWorkItem(_ => ProcessCourier(_courier));
         }
         
-        private void ProcessCourier(Courier courier)
+        private async void ProcessCourier(Courier courier)
         {
             courier.MessageArrived += OnMessageArrive;
-            var _ = courier.StartListeningStream();
+            
+            await courier.StartListeningStream();
         }
 
         private void OnMessageArrive(Courier courier, Message message)
@@ -43,7 +44,7 @@ namespace Eternity.Unity.Core.DeliveryService
             {
                 Log.Message("Player moved!");
                 
-                var moveMessage = message.Body as MoveMessage;
+                var moveMessage = (MoveMessage) message.Body;
                 var world = EternityApp.World;
                 var player = world.Player(moveMessage.Name);
 
@@ -54,9 +55,12 @@ namespace Eternity.Unity.Core.DeliveryService
             }
         }
 
-        public void Send<T>(RequestCode code, T message)
+        public async void Send<T>(RequestCode code, T message)
         {
-            ThreadPool.QueueUserWorkItem(_ => _courier.Send((ushort) code, message));
+            if (_courier == null)
+                return;
+            
+            await _courier.Send((ushort) code, message);
         }
     }
 }
