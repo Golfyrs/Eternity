@@ -1,6 +1,6 @@
 ﻿using Eternity.Reactive;
 
-namespace Eternity.Core
+namespace Eternity.Game
 {
     public class Player
     {

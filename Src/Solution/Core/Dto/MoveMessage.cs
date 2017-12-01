@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Eternity.Core.Dto
+namespace Eternity.Dto
 {
     [Serializable]
     public class MoveMessage

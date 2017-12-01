@@ -43,6 +43,7 @@
     <Compile Include="Core\Common\Reactive\Fluxes\PureFluxTest.cs" />
     <Compile Include="Core\Common\System\CompactDisposableTest.cs" />
     <Compile Include="Core\Common\System\FakeDisposableTest.cs" />
+    <Compile Include="Core\Game\PlayerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Eternity.Core.csproj">

@@ -63,9 +63,9 @@
     <Compile Include="Common\System\Disposables\CompactDisposable.cs" />
     <Compile Include="Common\System\Disposables\Disposable.cs" />
     <Compile Include="Common\System\Disposables\FakeDisposable.cs" />
-    <Compile Include="Core\Dto\MoveMessage.cs" />
-    <Compile Include="Core\Player.cs" />
-    <Compile Include="Core\World.cs" />
+    <Compile Include="Game\Player.cs" />
+    <Compile Include="Game\World.cs" />
+    <Compile Include="Dto\MoveMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
