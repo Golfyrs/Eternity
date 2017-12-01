@@ -41,9 +41,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Extensions\FunctionalExtensions.cs" />
+    <Compile Include="Common\Network\Couriers\ICuriers.cs" />
+    <Compile Include="Common\Network\Couriers\StreamCourier.cs" />
     <Compile Include="Common\Network\DeliveryServiceConnection.cs" />
-    <Compile Include="Common\Network\Courier.cs" />
+    <Compile Include="Common\Network\Delivery\IDelivery.cs" />
+    <Compile Include="Common\Network\Letters\ProtocolLetterWithObject.cs" />
+    <Compile Include="Common\Network\Delivery\NetworkDelivery.cs" />
     <Compile Include="Common\Network\DeliveryServiceListener.cs" />
+    <Compile Include="Common\Network\Letters\ILetter.cs" />
+    <Compile Include="Common\Network\Letters\ResponseLetter.cs" />
     <Compile Include="Common\Network\Message.cs" />
     <Compile Include="Common\Network\Packet.cs" />
     <Compile Include="Common\Network\Protocol.cs" />

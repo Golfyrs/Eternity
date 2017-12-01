@@ -16,18 +16,18 @@ namespace Eternity.Network
             return stream.WriteAsync(packetBytes, 0, packetBytes.Length);
         }
 
-        public static async Task<Packet> UnpackAsync(Stream stream)
-        {
-            var headBytes = new byte[4];
-            await stream.ReadAsync(headBytes, 0, headBytes.Length);
+        //public static async Task<byte[]> UnpackAsync(Stream stream)
+        //{
+        //    var headBytes = new byte[4];
+        //    await stream.ReadAsync(headBytes, 0, headBytes.Length);
             
-            var codeBytes = new byte[2];
-            await stream.ReadAsync(codeBytes, 0, codeBytes.Length);
+        //    var codeBytes = new byte[2];
+        //    await stream.ReadAsync(codeBytes, 0, codeBytes.Length);
 
-            var bodyBytes = new byte[BitConverter.ToInt32(headBytes, 0)];
-            await stream.ReadAsync(bodyBytes, 0, bodyBytes.Length);
+        //    var bodyBytes = new byte[BitConverter.ToInt32(headBytes, 0)];
+        //    await stream.ReadAsync(bodyBytes, 0, bodyBytes.Length);
 
-            return new Packet(BitConverter.ToUInt16(codeBytes, 0), bodyBytes);
-        }
+        //    return headBytes.Concat(bodyBytes).Concat(bodyBytes).ToArray();
+        //}
     }
 }

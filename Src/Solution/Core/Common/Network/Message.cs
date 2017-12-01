@@ -1,5 +1,8 @@
-﻿namespace Eternity.Network
+﻿using System;
+
+namespace Eternity.Network
 {
+    [Serializable]
     public class Message
     {
         public readonly ushort Code;

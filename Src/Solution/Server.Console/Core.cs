@@ -7,7 +7,7 @@ namespace Server.Console
     {
         public static void Main(string[] args)
         {
-            var server = new EternityServer("25.70.57.150", 5555);
+            var server = new EternityServer("25.70.105.88", 5555);
             server.Start();
             
             ConsoleKeyInfo keyInfo;
