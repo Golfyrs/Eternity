@@ -22,7 +22,7 @@ namespace Eternity.Unity.Core.DeliveryService
         
         public async Task Start()
         {
-            var tuple = await new DeliveryServiceConnection().Connect(IPAddress.Parse("25.70.105.88"), 5555);
+            var tuple = await new DeliveryServiceConnection().Connect(IPAddress.Parse("25.70.57.150"), 5555);
             
             if (tuple.Item2)
                 Log.Message("The client has connected to the server");
@@ -31,13 +31,18 @@ namespace Eternity.Unity.Core.DeliveryService
             
             _courier = new StreamCourier(tuple.Item1.GetStream());
 
-            var delivery = new NetworkDelivery(tuple.Item1);
-            delivery.PackageArrived += OnMessageArrive;
+            ThreadPool.QueueUserWorkItem(_ =>
+            {
+                var delivery = new NetworkDelivery(tuple.Item1);
+                delivery.PackageArrived += OnMessageArrive;
+            });
         }
 
         private void OnMessageArrive(TcpClient tcpClient, byte[] bytes)
         {
             var message = GetMessage(bytes);
+            if (message == null)
+                return;
 
             var code = (ResponseCode) message.Code;
             if (code == ResponseCode.PlayerMoved)
@@ -57,15 +62,20 @@ namespace Eternity.Unity.Core.DeliveryService
 
         private Message GetMessage(byte[] bytes)
         {
-            using (var ms = new MemoryStream(bytes, 0, bytes.Length))
+            if (bytes.Length == 0)
+                return null;
+            
+            using (var ms = new MemoryStream(bytes))
                 return new BinaryFormatter().Deserialize(ms) as Message;
         }
 
-        public void Send<T>(RequestCode code, T message)
+        public async void Send<T>(RequestCode code, T message)
         {
             var letter = new ProtocolLetterWithObject<T>((ushort) code, message);
-
-            ThreadPool.QueueUserWorkItem(_ => _courier.Send(letter));
+            var isOk = await _courier.Send(letter);
+            
+            if (!isOk)
+                Log.Error("Error sending message.");
         }
     }
 }

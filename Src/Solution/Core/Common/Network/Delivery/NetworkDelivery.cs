@@ -37,8 +37,12 @@ namespace Eternity.Network
                     var headBytes = new byte[4];
                     await stream.ReadAsync(headBytes, 0, headBytes.Length);
 
-                    var bodyBytes = new byte[BitConverter.ToInt32(headBytes, 0)];
-                    await stream.ReadAsync(bodyBytes, 0, bodyBytes.Length);
+                    var bodyLength = BitConverter.ToInt32(headBytes, 0);
+                    var bodyBytes = new byte[bodyLength];
+
+                    var readLength = 0;
+                    while (readLength != bodyLength)
+                        readLength += await stream.ReadAsync(bodyBytes, readLength, bodyBytes.Length - readLength);
                     
                     PackageArrived?.Invoke(_client, bodyBytes);
                 }

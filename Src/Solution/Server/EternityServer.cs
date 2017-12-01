@@ -42,6 +42,8 @@ namespace Eternity.Server
         private void OnMessageArrive(TcpClient tcpClient, byte[] bytes)
         {
             var message = GetMessage(bytes);
+            if (message == null)
+                return;
 
             var requestType = (RequestCode) message.Code;
             
@@ -52,7 +54,7 @@ namespace Eternity.Server
 
                     Console.WriteLine($"Name: {moveMessage.Name} X: {moveMessage.X}, Y: {moveMessage.Y}");
 
-                    Respond(_clients[tcpClient], ResponseCode.Ok);
+                    // Respond(_clients[tcpClient], ResponseCode.Ok);
 
                     foreach (var client in _clients.Where(x => x.Key != tcpClient).ToList())
                         Respond(client.Value, ResponseCode.PlayerMoved, moveMessage);
@@ -63,7 +65,10 @@ namespace Eternity.Server
 
         private Message GetMessage(byte[] bytes)
         {
-            using (var ms = new MemoryStream(bytes, 0, bytes.Length))
+            if (bytes.Length == 0)
+                return null;
+
+            using (var ms = new MemoryStream(bytes))
                 return new BinaryFormatter().Deserialize(ms) as Message;
         }
         
@@ -80,6 +85,8 @@ namespace Eternity.Server
         {
             var letter = new ProtocolLetterWithObject<T>((ushort) code, message);
             var success = await courier.Send(letter);
+
+            Console.WriteLine("Sending " + code + " at " + DateTime.Now);
 
             if (!success)
                 _clients.Remove(_clients.FirstOrDefault(x => x.Value == courier).Key);
