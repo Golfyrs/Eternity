@@ -11,7 +11,7 @@ namespace Eternity.Unity.Core
         public static DeliveryService.Server Server {  get; private set; }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        public static async void Initialize()
+        private static async void Initialize()
         {
             new GameObject("_root")
             {
@@ -23,11 +23,6 @@ namespace Eternity.Unity.Core
 
             Server = new DeliveryService.Server();
             await Server.Start();
-        }
-
-        private void Update()
-        {
-            Dispatcher.Update();
         }
 
         private void OnApplicationQuit() => Server?.Dispose();

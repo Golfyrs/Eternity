@@ -4,6 +4,7 @@ using Eternity.Dto;
 using Eternity.Game;
 using Eternity.Network;
 using Eternity.Unity.Common.Components.Weaving;
+using Eternity.Unity.Common.Reactive.Extensions;
 
 namespace Eternity.Unity.Core.DeliveryService
 {
@@ -18,24 +19,10 @@ namespace Eternity.Unity.Core.DeliveryService
             _y.Dispose();
         }
         
-        private readonly List<Action> _actionsQueue = new List<Action>();
-
-        public TestSendDataToServer()
-        {
-            Updates.OnNext(() =>
-            {
-                var queue = _actionsQueue;
-                foreach (var item in queue)
-                    item();
-                
-                _actionsQueue.Clear();
-            });
-        }
-        
         protected override void Weave(Player idea)
         {
-            _x = idea.X.OnNext(x => _actionsQueue.Add(() => Move(idea.Name, x, 0)));
-            _y = idea.Y.OnNext(y => _actionsQueue.Add(() => Move(idea.Name, 0, y)));
+            _x = idea.X.OnMainThread().OnNext(x => Move(idea.Name, x, 0));
+            _y = idea.Y.OnMainThread().OnNext(y => Move(idea.Name, 0, y));
         }
         
         private void Move(string name, int x, int y)

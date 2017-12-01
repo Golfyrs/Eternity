@@ -8,14 +8,16 @@ using UnityEngine;
 
 namespace Eternity.Unity.Common.Components
 {
+    /// <summary>
+    ///     Represents base class for all the components in game.
+    /// 
+    ///     Contains some generic methods for overloading along with injections logic.
+    /// </summary>
     public abstract class EternityComponent : MonoBehaviour
-    {        
-        // TODO: Move somewhere.
-        private readonly IFlux _updates = new PureFlux();
-        protected IFlow Updates => _updates;
-        
+    {
         private void Awake()
         {
+            // Injection.
             // TODO: Cache.
             var fields = ComponentFields(GetType());
             
@@ -24,9 +26,10 @@ namespace Eternity.Unity.Common.Components
             
             Initialize();
         }
-
-        private void Update() => _updates.Pulse();
         
+        /// <summary>
+        ///     Called at the post-Awake time.
+        /// </summary>
         protected virtual void Initialize() { }
         
         #region Helpers
