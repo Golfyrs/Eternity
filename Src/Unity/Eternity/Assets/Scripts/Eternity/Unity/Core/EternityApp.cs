@@ -1,6 +1,7 @@
 ﻿using Eternity.Game;
 using Eternity.Unity.Common;
 using UnityEngine;
+using Application = UnityEngine.Application;
 
 namespace Eternity.Unity.Core
 {
@@ -22,6 +23,14 @@ namespace Eternity.Unity.Core
             
             World.Spawn("Joshua", 0, 0);
             World.Spawn("XyiSobaki", 1, 1);
+
+            Application.logMessageReceived += (condition, stacktrace, logType) =>
+            {
+                if (logType == LogType.Exception)
+                {
+                    
+                }
+            };
 
             InitializeAsync();
         }
